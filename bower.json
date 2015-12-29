@@ -1,0 +1,19 @@
+{
+  "name": "kp-ckeditor",
+  "version": "0.0.0",
+  "authors": [
+    "Quentin Gérome <q.gerome@whatever-company.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ckeditor-quicktable": "https://github.com/ufdada/quicktable.git#dc71c7e940c2de328de4d1dc2be4fd785cc40565",
+    "ckeditor-dev": "4.4.7"
+  }
+}
