@@ -1,0 +1,10 @@
+﻿/*
+ Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ For licensing, see LICENSE.md or http://ckeditor.com/license
+*/
+CKEDITOR.dom.domObject=function(d){d&&(this.$=d)};
+CKEDITOR.dom.domObject.prototype=function(){var d=function(b,a){return function(c){"undefined"!=typeof CKEDITOR&&b.fire(a,new CKEDITOR.dom.event(c))}};return{getPrivate:function(){var b;(b=this.getCustomData("_"))||this.setCustomData("_",b={});return b},on:function(b){var a=this.getCustomData("_cke_nativeListeners");a||(a={},this.setCustomData("_cke_nativeListeners",a));a[b]||(a=a[b]=d(this,b),this.$.addEventListener?this.$.addEventListener(b,a,!!CKEDITOR.event.useCapture):this.$.attachEvent&&this.$.attachEvent("on"+
+b,a));return CKEDITOR.event.prototype.on.apply(this,arguments)},removeListener:function(b){CKEDITOR.event.prototype.removeListener.apply(this,arguments);if(!this.hasListeners(b)){var a=this.getCustomData("_cke_nativeListeners"),c=a&&a[b];c&&(this.$.removeEventListener?this.$.removeEventListener(b,c,!1):this.$.detachEvent&&this.$.detachEvent("on"+b,c),delete a[b])}},removeAllListeners:function(){var b=this.getCustomData("_cke_nativeListeners"),a;for(a in b){var c=b[a];this.$.detachEvent?this.$.detachEvent("on"+
+a,c):this.$.removeEventListener&&this.$.removeEventListener(a,c,!1);delete b[a]}CKEDITOR.event.prototype.removeAllListeners.call(this)}}}();
+(function(d){var b={};CKEDITOR.on("reset",function(){b={}});d.equals=function(a){try{return a&&a.$===this.$}catch(b){return!1}};d.setCustomData=function(a,c){var d=this.getUniqueId();(b[d]||(b[d]={}))[a]=c;return this};d.getCustomData=function(a){var c=this.$["data-cke-expando"];return(c=c&&b[c])&&a in c?c[a]:null};d.removeCustomData=function(a){var c=this.$["data-cke-expando"],c=c&&b[c],d,e;c&&(d=c[a],e=a in c,delete c[a]);return e?d:null};d.clearCustomData=function(){this.removeAllListeners();var a=
+this.$["data-cke-expando"];a&&delete b[a]};d.getUniqueId=function(){return this.$["data-cke-expando"]||(this.$["data-cke-expando"]=CKEDITOR.tools.getNextNumber())};CKEDITOR.event.implementOn(d)})(CKEDITOR.dom.domObject.prototype);

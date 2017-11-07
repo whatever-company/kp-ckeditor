@@ -32,7 +32,7 @@ module.exports = function () {
 			},
 
 			pluginPaths: [{
-				src: '<%= paths.bower %>ckeditor-quicktable',
+				src: '<%= paths.npm %>ckeditor-quicktable',
 				dest: 'quicktable'
 			}]
 		}

@@ -1,0 +1,8 @@
+﻿/*
+ Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ For licensing, see LICENSE.md or http://ckeditor.com/license
+*/
+(function(){CKEDITOR.focusManager=function(a){if(a.focusManager)return a.focusManager;this.hasFocus=!1;this.currentActive=null;this._={editor:a};return this};CKEDITOR.focusManager._={blurDelay:200};CKEDITOR.focusManager.prototype={focus:function(a){this._.timer&&clearTimeout(this._.timer);a&&(this.currentActive=a);this.hasFocus||this._.locked||((a=CKEDITOR.currentInstance)&&a.focusManager.blur(1),this.hasFocus=!0,(a=this._.editor.container)&&a.addClass("cke_focus"),this._.editor.fire("focus"))},lock:function(){this._.locked=
+1},unlock:function(){delete this._.locked},blur:function(a){function c(){if(this.hasFocus){this.hasFocus=!1;var a=this._.editor.container;a&&a.removeClass("cke_focus");this._.editor.fire("blur")}}if(!this._.locked){this._.timer&&clearTimeout(this._.timer);var b=CKEDITOR.focusManager._.blurDelay;a||!b?c.call(this):this._.timer=CKEDITOR.tools.setTimeout(function(){delete this._.timer;c.call(this)},b,this)}},add:function(a,c){var b=a.getCustomData("focusmanager");if(!b||b!=this){b&&b.remove(a);var b=
+"focus",e="blur";c&&(CKEDITOR.env.ie?(b="focusin",e="focusout"):CKEDITOR.event.useCapture=1);var d={blur:function(){a.equals(this.currentActive)&&this.blur()},focus:function(){this.focus(a)}};a.on(b,d.focus,this);a.on(e,d.blur,this);c&&(CKEDITOR.event.useCapture=0);a.setCustomData("focusmanager",this);a.setCustomData("focusmanager_handlers",d)}},remove:function(a){a.removeCustomData("focusmanager");var c=a.removeCustomData("focusmanager_handlers");a.removeListener("blur",c.blur);a.removeListener("focus",
+c.focus)}}})();

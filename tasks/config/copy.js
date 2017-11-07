@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 			dest: 'dist/',
 			expand: true,
 			flatten: false,
-			cwd: grunt.config.get('paths').bower + 'ckeditor-dev/dev/builder/release/'
+			cwd: grunt.config.get('paths').npm + 'ckeditor-dev/dev/builder/release/'
 		}
 	};
 };

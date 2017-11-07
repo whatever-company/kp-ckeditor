@@ -2,7 +2,6 @@
 
 module.exports = function (grunt) {
 	require('jit-grunt')(grunt, {
-		bower: 'grunt-bower-task',
 		copy: 'grunt-contrib-copy'
 	})({
 		customTasksDir: 'tasks'
@@ -11,7 +10,6 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		paths: {
 			npm: 'node_modules/',
-			bower: 'bower_components/'
 		}
 	});
 
@@ -31,14 +29,13 @@ module.exports = function (grunt) {
 		}
 	);
 
-
 	grunt.registerTask(
 		'build',
 		"Build CKEditor",
 		[
-			'npm-install',
 			'ckbuild',
 			'copy'
 		]
 	);
+	grunt.registerTask('default', 'build');
 };

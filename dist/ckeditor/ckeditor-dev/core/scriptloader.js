@@ -1,0 +1,7 @@
+﻿/*
+ Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ For licensing, see LICENSE.md or http://ckeditor.com/license
+*/
+CKEDITOR.scriptLoader=function(){var m={},f={};return{load:function(e,c,a,g){var n="string"==typeof e;n&&(e=[e]);a||(a=CKEDITOR);var h=e.length,p=[],q=[],r=function(b){c&&(n?c.call(a,b):c.call(a,p,q))};if(0===h)r(!0);else{var t=function(b,a){(a?p:q).push(b);0>=--h&&(g&&CKEDITOR.document.getDocumentElement().removeStyle("cursor"),r(a))},k=function(b,a){m[b]=1;var d=f[b];delete f[b];for(var c=0;c<d.length;c++)d[c](b,a)},u=function(b){if(m[b])t(b,!0);else{var a=f[b]||(f[b]=[]);a.push(t);if(!(1<a.length)){var d=
+new CKEDITOR.dom.element("script");d.setAttributes({type:"text/javascript",src:b});c&&(CKEDITOR.env.ie&&(8>=CKEDITOR.env.version||CKEDITOR.env.ie9Compat)?d.$.onreadystatechange=function(){if("loaded"==d.$.readyState||"complete"==d.$.readyState)d.$.onreadystatechange=null,k(b,!0)}:(d.$.onload=function(){setTimeout(function(){k(b,!0)},0)},d.$.onerror=function(){k(b,!1)}));d.appendTo(CKEDITOR.document.getHead())}}};g&&CKEDITOR.document.getDocumentElement().setStyle("cursor","wait");for(var l=0;l<h;l++)u(e[l])}},
+queue:function(){function e(){var a;(a=c[0])&&this.load(a.scriptUrl,a.callback,CKEDITOR,0)}var c=[];return function(a,g){var f=this;c.push({scriptUrl:a,callback:function(){g&&g.apply(this,arguments);c.shift();e.call(f)}});1==c.length&&e.call(this)}}()}}();

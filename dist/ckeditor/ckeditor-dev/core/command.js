@@ -1,0 +1,8 @@
+﻿/*
+ Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ For licensing, see LICENSE.md or http://ckeditor.com/license
+*/
+CKEDITOR.command=function(a,b){this.uiItems=[];this.exec=function(d){if(this.state==CKEDITOR.TRISTATE_DISABLED||!this.checkAllowed())return!1;this.editorFocus&&a.focus();return!1===this.fire("exec")?!0:!1!==b.exec.call(this,a,d)};this.refresh=function(a,c){if(!this.readOnly&&a.readOnly)return!0;if(this.context&&!c.isContextFor(this.context)||!this.checkAllowed(!0))return this.disable(),!0;this.startDisabled||this.enable();this.modes&&!this.modes[a.mode]&&this.disable();return!1===this.fire("refresh",
+{editor:a,path:c})?!0:b.refresh&&!1!==b.refresh.apply(this,arguments)};var c;this.checkAllowed=function(b){return b||"boolean"!=typeof c?c=a.activeFilter.checkFeature(this):c};CKEDITOR.tools.extend(this,b,{modes:{wysiwyg:1},editorFocus:1,contextSensitive:!!b.context,state:CKEDITOR.TRISTATE_DISABLED});CKEDITOR.event.call(this)};
+CKEDITOR.command.prototype={enable:function(){this.state==CKEDITOR.TRISTATE_DISABLED&&this.checkAllowed()&&this.setState(this.preserveState&&"undefined"!=typeof this.previousState?this.previousState:CKEDITOR.TRISTATE_OFF)},disable:function(){this.setState(CKEDITOR.TRISTATE_DISABLED)},setState:function(a){if(this.state==a||a!=CKEDITOR.TRISTATE_DISABLED&&!this.checkAllowed())return!1;this.previousState=this.state;this.state=a;this.fire("state");return!0},toggleState:function(){this.state==CKEDITOR.TRISTATE_OFF?
+this.setState(CKEDITOR.TRISTATE_ON):this.state==CKEDITOR.TRISTATE_ON&&this.setState(CKEDITOR.TRISTATE_OFF)}};CKEDITOR.event.implementOn(CKEDITOR.command.prototype);

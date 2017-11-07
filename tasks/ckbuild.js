@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 				],
 				plugins: {},
 				pluginPaths: null,
-				cwd: grunt.config.get('paths').bower + 'ckeditor-dev/dev/builder/'
+				cwd: grunt.config.get('paths').npm + 'ckeditor-dev/dev/builder/'
 			});
 
 			function writeConfigFile() {
@@ -55,7 +55,7 @@ module.exports = function (grunt) {
 				options.pluginPaths.forEach(function (path) {
 					wrench.copyDirSyncRecursive(
 						path.src,
-						grunt.config.get('paths').bower + 'ckeditor-dev/plugins/' + path.dest
+						grunt.config.get('paths').npm + 'ckeditor-dev/plugins/' + path.dest
 					);
 				});
 			}
@@ -65,29 +65,46 @@ module.exports = function (grunt) {
 
 				wrench.copyDirSyncRecursive(
 					options.skinPath,
-					grunt.config.get('paths').bower + 'ckeditor-dev/skins/' + options.skin
+					grunt.config.get('paths').npm + 'ckeditor-dev/skins/' + options.skin
 				);
 			}
 
 			function build() {
-				grunt.util.spawn(
-					{
-						grunt: false,
-						cmd: './build.sh',
-						args: ['--no-zip', '--no-tar'],
-						opts: {
-							cwd: options.cwd,
-							stdio: 'inherit'
-						}
-					},
-					function (error, results, code) {
-						var success = !error && (!code || code === 0);
-						if (!success) {
-							grunt.log.error(error);
-						}
-						done(success);
+				grunt.log.warn('Build:', options.cwd)
+				grunt.util.spawn({
+					grunt: false,
+					cmd: 'chmod',
+					args: [ '+x',  './build.sh'],
+					opts: {
+						cwd: options.cwd,
+						stdio: 'inherit'
 					}
-				);
+				}, function (error, results, code) {
+					var success = !error && (!code || code === 0);
+					if (success) {
+						grunt.util.spawn(
+							{
+								grunt: false,
+								cmd: './build.sh',
+								args: ['--no-zip', '--no-tar'],
+								opts: {
+									cwd: options.cwd,
+									stdio: 'inherit'
+								}
+							},
+							function (error, results, code) {
+								var success = !error && (!code || code === 0);
+								if (!success) {
+									grunt.log.error(error);
+								} else {
+									done(success);
+								}
+							}
+						);
+					} else {
+						grunt.log.error(error)
+					}
+				});
 			}
 
 			writeConfigFile();

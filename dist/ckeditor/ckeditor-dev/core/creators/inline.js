@@ -1,0 +1,7 @@
+﻿/*
+ Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ For licensing, see LICENSE.md or http://ckeditor.com/license
+*/
+(function(){CKEDITOR.inline=function(b,d){if(!CKEDITOR.env.isCompatible)return null;b=CKEDITOR.dom.element.get(b);if(b.getEditor())throw'The editor instance "'+b.getEditor().name+'" is already attached to the provided element.';var a=new CKEDITOR.editor(d,b,CKEDITOR.ELEMENT_MODE_INLINE),c=b.is("textarea")?b:null;c?(a.setData(c.getValue(),null,!0),b=CKEDITOR.dom.element.createFromHtml('\x3cdiv contenteditable\x3d"'+!!a.readOnly+'" class\x3d"cke_textarea_inline"\x3e'+c.getValue()+"\x3c/div\x3e",CKEDITOR.document),
+b.insertAfter(c),c.hide(),c.$.form&&a._attachToForm()):a.setData(b.getHtml(),null,!0);a.on("loaded",function(){a.fire("uiReady");a.editable(b);a.container=b;a.ui.contentsElement=b;a.setData(a.getData(1));a.resetDirty();a.fire("contentDom");a.mode="wysiwyg";a.fire("mode");a.status="ready";a.fireOnce("instanceReady");CKEDITOR.fire("instanceReady",null,a)},null,null,1E4);a.on("destroy",function(){c&&(a.container.clearCustomData(),a.container.remove(),c.show());a.element.clearCustomData();delete a.element});
+return a};CKEDITOR.inlineAll=function(){var b,d,a;for(a in CKEDITOR.dtd.$editable)for(var c=CKEDITOR.document.getElementsByTag(a),e=0,f=c.count();e<f;e++)b=c.getItem(e),"true"==b.getAttribute("contenteditable")&&(d={element:b,config:{}},!1!==CKEDITOR.fire("inline",d)&&CKEDITOR.inline(b,d.config))};CKEDITOR.domReady(function(){!CKEDITOR.disableAutoInline&&CKEDITOR.inlineAll()})})();
