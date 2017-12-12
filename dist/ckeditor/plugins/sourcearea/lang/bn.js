@@ -1,1 +1,1 @@
-﻿CKEDITOR.plugins.setLang("sourcearea","bn",{toolbar:"উৎস"});
+﻿CKEDITOR.plugins.setLang("sourcearea","bn",{toolbar:"সোর্স"});

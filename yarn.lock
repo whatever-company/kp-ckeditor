@@ -36,8 +36,8 @@ chalk@^1.1.1:
     supports-color "^2.0.0"
 
 ckeditor-dev@^4.4.8:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/ckeditor-dev/-/ckeditor-dev-4.7.3.tgz#6994e19ba63bf82bc011d3ed57d21bbdfad6e103"
+  version "4.4.8"
+  resolved "https://registry.yarnpkg.com/ckeditor-dev/-/ckeditor-dev-4.4.8.tgz#9b6c305477ae9b02b5876cd90340ef0a4bf0c4ae"
 
 "ckeditor-quicktable@https://github.com/ufdada/quicktable.git#dc71c7e940c2de328de4d1dc2be4fd785cc40565":
   version "1.0.5"

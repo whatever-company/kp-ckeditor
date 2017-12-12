@@ -1,1 +1,1 @@
-﻿CKEDITOR.plugins.setLang("elementspath","sl",{eleLabel:"Pot elementov",eleTitle:"Element %1"});
+﻿CKEDITOR.plugins.setLang("elementspath","sl",{eleLabel:"Pot elementov",eleTitle:"%1 element"});

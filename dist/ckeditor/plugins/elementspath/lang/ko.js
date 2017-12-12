@@ -1,1 +1,1 @@
-﻿CKEDITOR.plugins.setLang("elementspath","ko",{eleLabel:"요소 경로",eleTitle:"%1 요소"});
+﻿CKEDITOR.plugins.setLang("elementspath","ko",{eleLabel:"요소 위치",eleTitle:"%1 요소"});

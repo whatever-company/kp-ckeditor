@@ -1,1 +1,1 @@
-﻿CKEDITOR.plugins.setLang("sourcearea","eu",{toolbar:"Iturburua"});
+﻿CKEDITOR.plugins.setLang("sourcearea","eu",{toolbar:"HTML Iturburua"});
