@@ -35,9 +35,10 @@ chalk@^1.1.1:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-ckeditor-dev@^4.4.8:
-  version "4.4.8"
-  resolved "https://registry.yarnpkg.com/ckeditor-dev/-/ckeditor-dev-4.4.8.tgz#9b6c305477ae9b02b5876cd90340ef0a4bf0c4ae"
+ckeditor-dev@4.5.10:
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/ckeditor-dev/-/ckeditor-dev-4.5.10.tgz#8629aa52a1e31756762d103fd4ed675d85b6bb50"
+  integrity sha1-himqUqHjF1Z2LRA/1O1nXYW2u1A=
 
 "ckeditor-quicktable@https://github.com/ufdada/quicktable.git#dc71c7e940c2de328de4d1dc2be4fd785cc40565":
   version "1.0.5"

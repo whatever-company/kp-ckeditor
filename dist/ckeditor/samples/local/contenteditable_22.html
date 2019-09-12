@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Native contenteditable</title>
+<meta charset="utf-8">
+	<script src="../../ckeditor.js"></script>
+</head>
+<body>
+
+<div contenteditable="true" id="editable1"><p>foobar true</p></div>
+<div contenteditable="tRue" id="editable2"><p>foobar tRue</p></div>
+<div contenteditable="TRUE" id="editable3"><p>foobar TRUE</p></div>
+<div contenteditable="" id="editable4"><p>foobar </p></div>
+
+<h4>hidden:</h4>
+<div style="display: none;">
+	<div contenteditable="TRUE" id="hidden_editable"><p>foobar TRUE</p></div>
+</div>
+
+<p>
+	isReadOnly = <strong id="res"></strong>
+</p>
+<script>
+var el =document.getElementById( 'res' ),
+	ckHidden = CKEDITOR.document.getById( 'hidden_editable' );
+el.innerHTML = ckHidden.isReadOnly() ? 'true' : 'false';
+</script>
+
+</body>
+</html>

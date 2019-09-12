@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Native contenteditable</title>
+<meta charset="utf-8">
+</head>
+<body>
+
+<button id="toggle">toggle</button>
+<div class="wrapper" id="wrapper">
+
+<div id="editable" contenteditable>
+<p>foobar</p>
+
+<table align="right" border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse; margin:10px 0 10px 15px">
+	<caption><strong>Mission crew</strong></caption>
+	<thead>
+		<tr>
+			<th scope="col">Position</th>
+			<th scope="col">Astronaut</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Commander</td>
+			<td>Neil A. Armstrong</td>
+		</tr>
+		<tr>
+			<td>Command Module Pilot</td>
+			<td>Michael Collins</td>
+		</tr>
+		<tr>
+			<td>Lunar Module Pilot</td>
+			<td>Edwin &quot;Buzz&quot; E. Aldrin, Jr.</td>
+		</tr>
+	</tbody>
+</table>
+
+<table align="right" border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse; margin:10px 0 10px 15px">
+	<caption><strong>Mission crew</strong></caption>
+	<thead>
+		<tr>
+			<th scope="col">Position</th>
+			<th scope="col">Astronaut</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Commander</td>
+			<td>Neil A. Armstrong</td>
+		</tr>
+		<tr>
+			<td>Command Module Pilot</td>
+			<td>Michael Collins</td>
+		</tr>
+		<tr>
+			<td>Lunar Module Pilot</td>
+			<td>Edwin &quot;Buzz&quot; E. Aldrin, Jr.</td>
+		</tr>
+	</tbody>
+</table>
+
+<table align="right" border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse; margin:10px 0 10px 15px">
+	<caption><strong>Mission crew</strong></caption>
+	<thead>
+		<tr>
+			<th scope="col">Position</th>
+			<th scope="col">Astronaut</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Commander</td>
+			<td>Neil A. Armstrong</td>
+		</tr>
+		<tr>
+			<td>Command Module Pilot</td>
+			<td>Michael Collins</td>
+		</tr>
+		<tr>
+			<td>Lunar Module Pilot</td>
+			<td>Edwin &quot;Buzz&quot; E. Aldrin, Jr.</td>
+		</tr>
+	</tbody>
+</table>
+
+<table align="right" border="1" cellpadding="5" cellspacing="0" style="border-collapse:collapse; margin:10px 0 10px 15px">
+	<caption><strong>Mission crew</strong></caption>
+	<thead>
+		<tr>
+			<th scope="col">Position</th>
+			<th scope="col">Astronaut</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Commander</td>
+			<td>Neil A. Armstrong</td>
+		</tr>
+		<tr>
+			<td>Command Module Pilot</td>
+			<td>Michael Collins</td>
+		</tr>
+		<tr>
+			<td>Lunar Module Pilot</td>
+			<td>Edwin &quot;Buzz&quot; E. Aldrin, Jr.</td>
+		</tr>
+	</tbody>
+</table>
+</div><!--<div contenteditable="true">-->
+
+<div id="wrapper2"></div>
+
+</div>
+
+<style type="text/css">
+#wrapper {
+	border: 1px solid #ccc;
+	margin-top: 1em;
+	padding: 1em;
+	display: none;
+}
+</style>
+<script>
+var btn = document.getElementById( 'toggle' ),
+	wrapper = document.getElementById('wrapper'),
+	editable = document.getElementById( 'editable' );
+wrapper.style.display = wrapper.style.display == 'none' ? 'block' : 'none';
+
+//btn.addEventListener( 'click', function() {
+//	wrapper.style.display = wrapper.style.display == 'none' ? 'block' : 'none';
+//} );
+
+console.log( "editable.isContentEditable: " + editable.isContentEditable );
+console.log( "editable.getAttribute( 'contenteditable' ): " + editable.getAttribute( 'contenteditable' ) );
+console.log( "typeof editable.getAttribute( 'contenteditable' ): " + typeof editable.getAttribute( 'contenteditable' ) );
+//$('#panel').toggle();
+</script>
+</body>
+</html>

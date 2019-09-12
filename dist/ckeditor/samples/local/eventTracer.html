@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Native contenteditable</title>
+	<meta charset="utf-8">
+	<script src="../../ckeditor.js"></script>
+	<link href="../sample.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="tracer"><br></div>
+
+<div id="editable">
+	<textarea cols="80" id="editor1" name="editor1" rows="10">
+		&lt;p&gt;foobar&lt;/p&gt;
+		&lt;p&gt;&lt;img src=&quot;sample.jpg&quot;&gt;&lt;/p&gt;
+	</textarea>
+</div>
+
+<p style="font-size: 1.8em;">Some random text, foo bar baz.</p>
+
+
+<script>
+var editable = document.getElementById( 'editable' ),
+	keyCodes = [],
+	tracer = document.getElementById( 'tracer' );
+
+function logIntoTracer( evt, skipDate ) {
+	var newRow = document.createElement( 'div' ),
+		date = new Date();
+
+	var msg = '';
+
+	if ( skipDate !== true ) {
+		msg = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + msg;
+	}
+
+	if ( typeof evt == 'string' ) {
+		msg += ' ';
+		msg += evt;
+	} else {
+		msg += ' <i>' + evt.type + '</i>: ' + evt.keyCode;
+
+		if ( evt.code ) {
+			msg += ( ' code: ' + evt.code );
+		}
+
+		if ( evt.key ) {
+			msg += ( ' key: ' + evt.key );
+		}
+	}
+
+	newRow.innerHTML = msg;
+
+	tracer.insertBefore( newRow, tracer.firstChild );
+}
+
+//editable.addEventListener( 'keydown', function( evt ) {
+//	if ( keyCodes.indexOf( evt.keyCode ) === -1 ) {
+//		keyCodes.push( evt.keyCode );
+//	}
+//} );
+
+//(function() {
+//	var evts = [ 'change' ];
+//	//var evts = [ 'keydown', 'keypress', 'keyup', 'beforeInput', 'input', 'textInput' ];
+//
+//	for (var i=0; i < evts.length; i++) {
+//		(function( eventType ) {
+//
+//			if ( editable.attachEvent ) {
+//				editable.attachEvent( 'on' + eventType, function( evt ) {
+//					logIntoTracer( evt );
+//				} );
+//			} else {
+//				editable.addEventListener( eventType, function( evt ) {
+//					logIntoTracer( evt );
+//				} );
+//			}
+//
+//		}( evts[i] ));
+//	}
+//}());
+</script>
+
+<script>
+	// CKE initialization.
+	CKEDITOR.replace( 'editor1', {
+		height: 550,
+		toolbar: [ [ 'Source', 'Bold', 'Italic', 'Image', 'Styles', 'Checkbox' ], [ 'Undo', 'Redo' ] ],
+		on: {
+			change: function( evt ) {
+				//console.log('change std');
+				logIntoTracer( 'change', evt );
+				//debugger;
+
+			},
+			key: function( evt ) {
+				logIntoTracer( 'key', evt );
+			},
+			instanceReady: function( evt ) {
+				var editor = CKEDITOR.instances.editor1;
+				CKEDITOR.instances.editor1.focus();
+
+				//editor.editable().on( 'keyup', function( evt ) {
+				//	console.log( evt.data.$.keyCode );
+				//} );
+
+				editor.editable().on( 'input', function() {
+					//console.log('input event occured');
+					// Does not fire at undo.
+					//console.log('new change');
+				} );
+			}
+		}
+	} );
+
+</script>
+
+<style type="text/css">
+#tracer {
+	border: 1px solid #3d3d3d;
+	float: left;
+	width: 300px;
+	min-height: 20px;
+}
+
+#editable {
+	margin-left: 320px;
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Native contenteditable</title>
+<meta charset="utf-8">
+</head>
+<body>
+
+<div id="tracer"><br></div>
+
+<div contenteditable="true" id="editable">
+	<p>foobar</p>
+</div>
+
+<script type="text/javascript">
+var editable = document.getElementById( 'editable' ),
+	keyCodes = [],
+	tracer = document.getElementById( 'tracer' );
+
+function logIntoTracer( evt, skipDate ) {
+	var newRow = document.createElement( 'div' ),
+		date = new Date();
+
+	var msg = '';
+
+	if ( skipDate !== true ) {
+		msg = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + msg;
+	}
+
+	console.log( typeof evt );
+	if ( typeof evt == 'string' ) {
+		msg += ' ';
+		msg += evt;
+	} else {
+		msg += ' <i>' + evt.type + '</i>: ' + evt.keyCode;
+
+		if ( evt.code ) {
+			msg += ( ' code: ' + evt.code );
+		}
+
+		if ( evt.key ) {
+			msg += ( ' key: ' + evt.key );
+		}
+	}
+
+	newRow.innerHTML = msg;
+
+	tracer.insertBefore( newRow, tracer.firstChild );
+}
+
+editable.addEventListener( 'keydown', function( evt ) {
+	if ( keyCodes.indexOf( evt.keyCode ) === -1 ) {
+		keyCodes.push( evt.keyCode );
+	}
+} );
+
+(function() {
+	var evts = [ 'keydown', 'keypress', 'keyup', 'beforeInput', 'input', 'textInput' ];
+
+	for (var i=0; i < evts.length; i++) {
+		(function( eventType ) {
+			editable.addEventListener( eventType, function( evt ) {
+				logIntoTracer( evt );
+			} );
+		}( evts[i] ));
+	}
+}());
+</script>
+
+<style type="text/css">
+#tracer {
+	border: 1px solid #3d3d3d;
+	float: left;
+	width: 300px;
+	min-height: 20px;
+}
+
+#editable {
+	margin-left: 320px;
+	border: 2px solid #3d3d3d;
+}
+</style>
+</body>
+</html>

@@ -1,12 +1,12 @@
 {
   "name": "kp-ckeditor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "ckeditor-dev": "^4.4.8",
+    "ckeditor-dev": "4.5.10",
     "ckeditor-quicktable": "https://github.com/ufdada/quicktable.git#dc71c7e940c2de328de4d1dc2be4fd785cc40565",
     "grunt": "^0.4.5",
     "grunt-contrib-copy": "^0.8.2",

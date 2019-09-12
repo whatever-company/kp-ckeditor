@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Framed contenteditable</title>
+	</head>
+	<body>
+		<style type="text/css">
+			div[contenteditable="true"] { border: 1px solid blue; }
+			div[contenteditable="true"] p{ margin: 60px 100px; outline: 1px solid green; }
+			div[contenteditable="true"] img{ float: right; height: 300px; width: 320px; }
+		</style>
+		<div contenteditable="true">
+			<img src="http://i1.connect.microsoft.com/images/Connect-logo-New.png" alt="Dummy image" />
+			<p>Line1</p>
+			<p>Line2</p>
+			<p>Line3</p>
+		</div>
+	</body>
+</html>

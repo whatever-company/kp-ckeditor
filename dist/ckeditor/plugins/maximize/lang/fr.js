@@ -1,1 +1,1 @@
-﻿CKEDITOR.plugins.setLang("maximize","fr",{maximize:"Agrandir",minimize:"Minimiser"});
+﻿CKEDITOR.plugins.setLang("maximize","fr",{maximize:"Agrandir",minimize:"Réduire"});

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Native contenteditable</title>
+<meta charset="utf-8">
+</head>
+<body>
+
+<div contenteditable="true" id="editable">
+<p>foobar</p>
+<p>image <img src="../assets/sample.jpg"></p>
+</div>
+<p>Some <strong>random</strong> text</p>
+
+<script type="text/javascript">
+var editable = document.getElementById( 'editable' ),
+	//watchedEvents = [ 'drag', 'dragstart', 'drop', 'dragend', 'dragover', 'dragleave', 'dragenter', 'input', 'mousedown', 'mouseup', 'click' ],
+	//watchedEvents = [ 'keyup', 'keydown', 'input', 'paste' ],
+	watchedEvents = [ 'input', 'mousedown', 'mouseup', 'click', 'resizestart', 'resize' ],
+	keyCodes = [];
+
+editable.addEventListener( 'keydown', function( evt ) {
+	if ( keyCodes.indexOf( evt.keyCode ) === -1 ) {
+		keyCodes.push( evt.keyCode );
+	}
+	console.log( editable.innerHTML );
+} );
+
+for (var i=0; i < watchedEvents.length; i++) {
+	(function( eventType ) {
+		editable.addEventListener( eventType, function( evt ) {
+			console.log( eventType, evt );
+		} );
+	}( watchedEvents[ i ] ));
+}
+</script>
+
+</body>
+</html>

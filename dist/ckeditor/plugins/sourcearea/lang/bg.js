@@ -1,1 +1,1 @@
-﻿CKEDITOR.plugins.setLang("sourcearea","bg",{toolbar:"Източник"});
+﻿CKEDITOR.plugins.setLang("sourcearea","bg",{toolbar:"Изходен код"});
